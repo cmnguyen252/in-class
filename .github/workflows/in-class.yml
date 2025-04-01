@@ -1,0 +1,43 @@
+name: In-Class Challenge
+
+on: 
+  workflow_dispatch:
+    inputs:
+      String:
+        description: "String input"
+        type: string
+      Number:
+        description: "Numerical input"
+        type: string
+      Predefined:
+        description: "Predefined input"
+        type: choice
+        options:
+          - choice 1
+          - choice 2
+          - choice 3
+        
+jobs:
+  modify-inputs:
+    runs-on: ubuntu-latest
+    outputs: 
+          String: ${{ inputs.String }}^^
+          Number: ${{ inputs.Number }}*2
+          Predefined: "${{ inputs.Predefined }}_selected"
+    steps:
+      - run:
+          echo "${{ inputs.String }}"
+          echo "${{ inputs.Number }}"
+          echo "${{ inputs.Predefined }}"
+
+  print-inputs:
+    needs: modify-inputs
+    runs-on: ubuntu-latest
+    env:
+      String: "${{ needs.modify-inputs.outputs.String }}"
+      Number: "${{ needs.modify-inputs.outputs.Number }}"
+      Predefined: "${{ needs.modify-inputs.outputs.Predefined }}"
+    steps:
+      - run:
+          echo "The modified inputs are $String, $Number, $Predefined"
+    
