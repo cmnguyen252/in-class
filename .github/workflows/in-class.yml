@@ -27,7 +27,7 @@ jobs:
     steps:
       - run:
           echo Str1=${{ inputs.String }};
-          echo Str=${Str1^^} >> $GITHUB_ENV;
+          echo Str="${Str1^^}" >> $GITHUB_ENV;
           
           echo Nmb="${{ inputs.Number }}" >> $GITHUB_ENV;
           echo Nmb="${Nmb}*2" >> $GITHUB_ENV;
