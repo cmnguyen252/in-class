@@ -26,13 +26,13 @@ jobs:
           Predefined: "${{ inputs.Predefined }}_selected"
     steps:
       - run:
-          Str="${{ inputs.String }}"
-          Str="${Str^^}"
-          Nmb="${{ inputs.Number }}"
-          Nmb="$((Nmb*2))"
+          echo "${{ inputs.String }}" >> $Str
+          echo "${Str^^}" >> $Str
+          echo "${{ inputs.Number }}" >> $Nmb
+          echo "$((Nmb*2))" >> $Nmb
         env:
-          Str: "$Str" 
-          Nmb: "$Nmb"
+          Str: $Str 
+          Nmb: $Nmb
 
   print-inputs:
     needs: modify-inputs
