@@ -21,14 +21,18 @@ jobs:
   modify-inputs:
     runs-on: ubuntu-latest
     outputs: 
-          String: ${{ inputs.String }}^^
-          Number: ${{ inputs.Number }}*2
+          String: ${{ env.Str }}
+          Number: ${{ env.Nmb }}
           Predefined: "${{ inputs.Predefined }}_selected"
     steps:
       - run:
-          echo "${{ inputs.String }}"
-          echo "${{ inputs.Number }}"
-          echo "${{ inputs.Predefined }}"
+          Str="${{ inputs.String }}"
+          Str="${Str^^}"
+          Nmb="${{ inputs.Number }}"
+          Nmb="${Nmb*2}
+        env:
+          Str: "$Str" 
+          Nmb: "$Nmb"
 
   print-inputs:
     needs: modify-inputs
