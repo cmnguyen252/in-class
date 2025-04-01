@@ -28,8 +28,9 @@ jobs:
       - run:
           echo "Str=${{ inputs.String }}" >> $GITHUB_ENV;
           echo "Str=${Str^^}" >> $GITHUB_ENV;
+          
           echo "Nmb=${{ inputs.Number }}" >> $GITHUB_ENV;
-          echo "Nmb=$((2*${Nmb}))" >> $GITHUB_ENV;
+          echo "Nmb=${Nmb*2}" >> $GITHUB_ENV;
         env:
           Str: $Str 
           Nmb: $Nmb
