@@ -29,7 +29,7 @@ jobs:
           Str="${{ inputs.String }}"
           Str="${Str^^}"
           Nmb="${{ inputs.Number }}"
-          Nmb="${Nmb*2}"
+          Nmb="$((Nmb*2))"
         env:
           Str: "$Str" 
           Nmb: "$Nmb"
