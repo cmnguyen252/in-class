@@ -30,7 +30,7 @@ jobs:
           echo Str=${Str^^} >> $GITHUB_ENV;
           
           echo Nmb=${{ inputs.Number }} >> $GITHUB_ENV;
-          echo Nmb=$((Nmb*2)) >> $GITHUB_ENV;
+          echo Nmb=$((${Nmb}*2)) >> $GITHUB_ENV;
         env:
           Str: $Str 
           Nmb: $Nmb
