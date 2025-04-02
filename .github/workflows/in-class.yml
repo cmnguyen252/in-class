@@ -26,7 +26,8 @@ jobs:
           Predefined: "${{ inputs.Predefined }}_selected"
     steps:
       - run:
-          Str=echo "${{ inputs.String }}" | tr a-z A-Z >> $GITHUB_ENV;
+          Str="${{ inputs.String }}" >> $GITHUB_ENV;
+          Str=echo ${Str^^}
           
           echo "Nmb=$((${{ inputs.Number }}*2))" >> $GITHUB_ENV;
         env:
