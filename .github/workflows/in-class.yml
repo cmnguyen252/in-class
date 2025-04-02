@@ -26,8 +26,8 @@ jobs:
           Predefined: "${{ inputs.Predefined }}_selected"
     steps:
       - run:
-          echo test="${{ inputs.String }}"; 
-          echo Str="${random input^^}" >> $GITHUB_ENV;
+          echo "test=${{ inputs.String }}"; 
+          echo "Str=${test^^}" >> $GITHUB_ENV;
           
           echo "Nmb=$((${{ inputs.Number }}*2))" >> $GITHUB_ENV;
         env:
