@@ -21,18 +21,18 @@ jobs:
   modify-inputs:
     runs-on: ubuntu-latest
     outputs: 
-          String: "${{ env.Str }}"
-          Number: "${{ env.Nmb }}"
+          String: "${{ env.STR }}"
+          Number: "${{ env.NMB }}"
           Predefined: "${{ inputs.Predefined }}_selected"
     steps:
       - run:
-          echo String=${{ inputs.String }}; 
-          echo Str="${String^^}" >> $GITHUB_ENV;
+          echo test=${{ inputs.String }}; 
+          echo STR=${test^^} >> $GITHUB_ENV;
           
-          echo Nmb=$((${{ inputs.Number }}*2)) >> $GITHUB_ENV;
+          echo NMB=$((${{ inputs.Number }}*2)) >> $GITHUB_ENV;
         env:
-          Str: $Str
-          Nmb: $Nmb
+          Str: $STR
+          Nmb: $NMB
 
   print-inputs:
     needs: modify-inputs
